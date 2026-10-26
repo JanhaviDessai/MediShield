@@ -1,0 +1,33 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large datasets
+data/raw/*
+data/processed/*
+
+# Generated model artifacts
+artifacts/models/
+artifacts/*.joblib
+artifacts/*.pkl
+
+# Test and cache output
+.pytest_cache/
+.mypy_cache/
+.coverage
