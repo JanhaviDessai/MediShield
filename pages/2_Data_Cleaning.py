@@ -74,7 +74,7 @@ with metric4:
 with st.expander("Preview original dataset", expanded=True):
     st.dataframe(
         df.head(20),
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -96,7 +96,7 @@ with st.expander("Original column information"):
 
     st.dataframe(
         column_info,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -158,7 +158,7 @@ with st.form("data_cleaning_form"):
     clean_clicked = st.form_submit_button(
         "Clean dataset",
         type="primary",
-        use_container_width=True,
+        width="stretch",
     )
 
 # ---------------------------------------------------------
@@ -276,7 +276,7 @@ if (
 else:
     st.dataframe(
         cleaning_report,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -295,7 +295,7 @@ st.subheader("Cleaned dataset")
 
 st.dataframe(
     cleaned_df.head(50),
-    use_container_width=True,
+    width="stretch",
     hide_index=True,
 )
 

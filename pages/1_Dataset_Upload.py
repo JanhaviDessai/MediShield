@@ -122,16 +122,23 @@ st.caption(
 # Data preview
 st.subheader("Data preview")
 
-preview_rows = st.slider(
-    "Number of rows to preview",
-    min_value=5,
-    max_value=min(50, max(5, len(df))),
-    value=min(10, max(5, len(df))),
-)
+# A slider needs min_value < max_value, so small datasets are shown whole.
+preview_limit = min(50, len(df))
+
+if preview_limit <= 5:
+    preview_rows = len(df)
+    st.caption(f"Showing all {len(df):,} rows.")
+else:
+    preview_rows = st.slider(
+        "Number of rows to preview",
+        min_value=5,
+        max_value=preview_limit,
+        value=min(10, preview_limit),
+    )
 
 st.dataframe(
     df.head(preview_rows),
-    use_container_width=True,
+    width="stretch",
 )
 
 # Column profile
@@ -141,7 +148,7 @@ column_profile = profile["column_profiles"]
 
 st.dataframe(
     column_profile,
-    use_container_width=True,
+    width="stretch",
     hide_index=True,
 )
 
@@ -159,7 +166,7 @@ else:
         missing_profile[
             ["column", "missing_count", "missing_pct"]
         ],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -212,7 +219,7 @@ if st.session_state.get("selected_target") in target_options:
 
     st.dataframe(
         target_counts,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 

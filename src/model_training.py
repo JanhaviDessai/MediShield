@@ -24,7 +24,10 @@ from sklearn.svm import SVC
 from src.preprocessing import build_preprocessor, split_features_target
 
 
-MODEL_DIR = Path("artifacts/models")
+# Anchor to the project root so saved models are found no matter which
+# directory Streamlit was launched from.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+MODEL_DIR = PROJECT_ROOT / "artifacts" / "models"
 
 IDENTIFIER_COLUMNS = {
     "id",

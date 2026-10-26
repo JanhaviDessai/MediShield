@@ -100,7 +100,7 @@ if uploaded_file is not None:
         st.subheader("Uploaded records")
         st.dataframe(
             input_df.head(10),
-            use_container_width=True,
+            width="stretch",
         )
 
         st.caption(
@@ -151,7 +151,7 @@ if results is not None and same_model:
 
     st.dataframe(
         results,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 

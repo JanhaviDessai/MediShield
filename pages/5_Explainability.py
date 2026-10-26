@@ -44,15 +44,21 @@ st.write(f"**Algorithm:** {package['best_model_name']}")
 st.write(f"**Records available:** {len(features)}")
 
 st.subheader("Prediction batch")
-st.dataframe(results, use_container_width=True, hide_index=True)
+st.dataframe(results, width="stretch", hide_index=True)
 
 max_rows = min(20, len(features))
-rows_to_explain = st.slider(
-    "Number of records to explain",
-    min_value=1,
-    max_value=max_rows,
-    value=min(10, max_rows),
-)
+
+# A slider needs min_value < max_value, so a single record skips the slider.
+if max_rows <= 1:
+    rows_to_explain = max_rows
+    st.caption("Explaining the only available record.")
+else:
+    rows_to_explain = st.slider(
+        "Number of records to explain",
+        min_value=1,
+        max_value=max_rows,
+        value=min(10, max_rows),
+    )
 
 if st.button("Generate explanations", type="primary"):
     try:
@@ -100,11 +106,11 @@ if (
         title="Features with the Largest Average Contributions",
     )
     fig.update_layout(template="plotly_white")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.dataframe(
         importance_df,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
@@ -162,11 +168,11 @@ if (
         title=f"Feature Contributions — Record {row_index + 1}",
     )
     detail_fig.update_layout(template="plotly_white")
-    st.plotly_chart(detail_fig, use_container_width=True)
+    st.plotly_chart(detail_fig, width="stretch")
 
     st.dataframe(
         detail_df,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 

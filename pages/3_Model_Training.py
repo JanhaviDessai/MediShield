@@ -78,7 +78,7 @@ if submitted:
         st.subheader("Model comparison")
         st.dataframe(
             output["results"].round(4),
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
@@ -117,6 +117,6 @@ else:
             }
             for item in saved_models
         ],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
