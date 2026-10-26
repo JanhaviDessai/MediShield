@@ -2,7 +2,7 @@
 
 ### Medical Machine Learning and Prediction Platform
 
-MediShield is a Python-based medical machine learning application designed to train disease prediction models, generate predictions from patient CSV files, evaluate model performance, and explore model explainability through an interactive Streamlit interface.
+MediShield is a Python-based medical machine learning application designed to train Mets disease prediction models, generate predictions from patient CSV files, evaluate model performance, and explore model explainability through an interactive Streamlit interface.
 
 > **Disclaimer:** MediShield is an educational and research project. It is not a medical device and must not be used to diagnose diseases, make treatment decisions, or replace advice from qualified healthcare professionals.
 
